@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mireya Leyva | Embajadora de Google Gemini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="intro-splash" id="introSplash" aria-hidden="true">
+      <div class="intro-content">
+        <h1 class="intro-title" id="introTitle">
+          WELCOME TO MY
+          <span style="color: var(--google-blue)">G</span><span style="color: var(--google-red)">O</span><span style="color: var(--google-yellow)">O</span><span style="color: var(--google-blue)">G</span><span style="color: var(--google-green)">L</span><span style="color: var(--google-red)">E</span>
+          SPACE
+        </h1>
+        <img src="estudiantes-embajadores.png" alt="" onerror="this.style.display='none'" />
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var splash = document.getElementById("introSplash");
+        if (sessionStorage.getItem("introShown")) {
+          splash.style.display = "none";
+          return;
+        }
+        sessionStorage.setItem("introShown", "1");
+
+        var el = document.getElementById("introTitle");
+        if (!el) return;
+        var nodes = Array.prototype.slice.call(el.childNodes);
+        el.textContent = "";
+        var i = 0;
+        nodes.forEach(function (node, index) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            var text = node.textContent.replace(/\s+/g, " ");
+            if (index === 0) text = text.replace(/^\s+/, "");
+            if (index === nodes.length - 1) text = text.replace(/\s+$/, "");
+            text.split("").forEach(function (ch) {
+              var span = document.createElement("span");
+              span.className = "wave-letter";
+              span.style.animationDelay = i * 0.04 + "s";
+              span.textContent = ch === " " ? " " : ch;
+              el.appendChild(span);
+              i++;
+            });
+          } else {
+            node.classList.add("wave-letter");
+            node.style.animationDelay = i * 0.04 + "s";
+            el.appendChild(node);
+            i++;
+          }
+        });
+      })();
+    </script>
+
+    <nav class="site-nav">
+      <div class="container">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="como-funciona-la-ia.html">¿Cómo funciona la IA?</a>
+        <a href="proximos-talleres.html">Próximos talleres</a>
+      </div>
+    </nav>
+
+    <header class="hero-section">
+      <div class="hero-content">
+        <div class="profile-hero">
+          <div class="profile-photo-wrap">
+            <img
+              src="mireya-leyva.jpg"
+              alt="Mireya Julissa Leyva Alvarez"
+              class="profile-photo"
+            />
+          </div>
+
+          <div class="profile-text">
+            <span class="profile-eyebrow">Google Student Ambassador</span>
+            <h1 class="profile-name">Mireya Julissa Leyva Alvarez</h1>
+            <p class="profile-bio">
+              Estudiante de Ingeniería en Tecnologías del Internet e
+              Ingeniería en Sistemas Computacionales, y maestra de Robótica en
+              primaria. Combino desarrollo de software, IA, IoT y educación
+              tecnológica para construir proyectos con propósito — y ahora,
+              como Embajadora de Google Gemini, comparto ese camino con mi
+              comunidad universitaria.
+            </p>
+
+            <div class="profile-social">
+              <a href="https://www.instagram.com/mireledev/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/mireya-leyva-355a05341/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="4" />
+                  <text x="7.2" y="16.5" font-size="10" font-weight="700" fill="currentColor" stroke="none" font-family="Arial, sans-serif">in</text>
+                </svg>
+              </a>
+            </div>
+
+            <div class="google-badge">
+              <span class="g-logo">
+                <span class="g-blue">G</span>
+              </span>
+              <span class="badge-text">Embajadora de Google Gemini</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-section">
+        <div class="container layout-grid">
+          <div class="col-left">
+            <div class="hero-links">
+              <img src="gemini-logo.png" alt="Google Gemini" class="gemini-logo" />
+              <a href="https://gemini.google.com" target="_blank" rel="noopener" class="btn-black-pill">
+                Prueba
+                <span class="icon sparkle material-symbols-outlined" aria-hidden="true">auto_awesome</span>
+                Google Gemini
+              </a>
+              <a
+                href="https://one.google.com/ai?g1_landing_page=75"
+                target="_blank"
+                rel="noopener"
+                class="text-link"
+              >
+                Ver planes y precios para estudiantes
+                <span class="icon material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-right">
+            <h2 class="title-blue">¡QUÉ GUSTO TENERTE POR AQUÍ!</h2>
+
+            <p>
+              Como parte del programa
+              <strong>Estudiantes Embajadores de Google Gemini 2026</strong>,
+              este es mi espacio para compartir contigo lo que voy aprendiendo
+              sobre inteligencia artificial: cómo funciona realmente, cómo
+              sacarle provecho con buenos prompts y cómo aplicarla en
+              proyectos con propósito, sin dejar de lado el pensamiento
+              crítico.
+            </p>
+
+            <p>
+              Soy estudiante de Ingeniería en Tecnologías del Internet e
+              Ingeniería en Sistemas Computacionales, y maestra de Robótica en
+              primaria. Creo firmemente en aprender haciendo — por eso este
+              portal está pensado como una guía práctica, no solo teoría.
+            </p>
+
+            <p>
+              Aquí iré agregando recursos, guías y materiales para que, sin
+              importar tu carrera, puedas empezar a usar
+              <strong>Google Gemini</strong> con criterio y sacarle el mayor
+              provecho a tus estudios y proyectos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="banner-black">
+        <h2 class="reveal">#ESTUDIANTESEMBAJADORESGOOGLE</h2>
+      </section>
+
+      <section class="about-section">
+        <div class="container">
+          <h2 class="title-blue reveal">SOBRE MI PARTICIPACIÓN EN EL PROGRAMA</h2>
+          <p class="reveal">
+            Como Embajadora de Google Gemini, mi papel es acercar el uso
+            responsable y creativo de la Inteligencia Artificial a mi
+            comunidad universitaria. No necesitas experiencia previa en
+            programación ni en IA para aprovechar estos recursos: solo
+            curiosidad y ganas de aprender.
+          </p>
+
+          <div class="about-grid reveal-stagger">
+            <div class="about-card">
+              <h3>
+                <span class="icon material-symbols-outlined" aria-hidden="true">school</span>
+                Te capacito
+              </h3>
+              <p>
+                Comparto talleres, guías y materiales sobre IA generativa,
+                pensamiento crítico digital y herramientas de Google Gemini.
+              </p>
+            </div>
+            <div class="about-card">
+              <h3>
+                <span class="icon material-symbols-outlined" aria-hidden="true">diversity_3</span>
+                Construimos comunidad
+              </h3>
+              <p>
+                Organizo sesiones y actividades en la universidad para llevar
+                estos conocimientos a más estudiantes.
+              </p>
+            </div>
+            <div class="about-card">
+              <h3>
+                <span class="icon material-symbols-outlined" aria-hidden="true">rocket_launch</span>
+                Crecemos juntos
+              </h3>
+              <p>
+                Te ayudo a construir un portafolio de liderazgo e innovación
+                que impulse tu desarrollo profesional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mireya Leyva · Embajadora de Google Gemini · 2026</p>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>

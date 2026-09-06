@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estructura de un prompt | Mireya Leyva - Embajadora de Google Gemini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="container">
+        <a href="index.html">Inicio</a>
+        <a href="recursos.html" class="active">Recursos</a>
+        <a href="como-funciona-la-ia.html">¿Cómo funciona la IA?</a>
+        <a href="proximos-talleres.html">Próximos talleres</a>
+      </div>
+    </nav>
+
+    <header class="content-hero">
+      <div class="container">
+        <a href="recursos.html" class="breadcrumb">← Volver a Recursos</a>
+        <span class="content-kicker">Prompting</span>
+        <h1>La estructura de un buen prompt</h1>
+      </div>
+    </header>
+
+    <main>
+      <article class="content-body container">
+        <h2>Un prompt es una instrucción, no una pregunta al azar</h2>
+        <p>
+          Un <strong>prompt</strong> es el texto que le das a una IA como
+          Google Gemini para pedirle algo. Mientras más claro y completo sea,
+          mejor será la respuesta. Un buen prompt normalmente combina estas
+          cuatro partes:
+        </p>
+
+        <div class="prompt-anatomy reveal-stagger">
+          <div class="part">
+            <span class="part-label">Rol</span>
+            <p>
+              Dile a la IA qué papel debe adoptar. Esto ajusta el tono y el
+              nivel de conocimiento de la respuesta.
+              <em>Ej: "Actúa como un tutor de estadística para principiantes."</em>
+            </p>
+          </div>
+          <div class="part">
+            <span class="part-label">Tarea</span>
+            <p>
+              Indica exactamente qué quieres que haga. Usa verbos claros:
+              resume, compara, genera, corrige, explica.
+            </p>
+          </div>
+          <div class="part">
+            <span class="part-label">Contexto</span>
+            <p>
+              Da la información necesaria para que la respuesta sea relevante:
+              para quién es, con qué propósito, qué restricciones existen.
+            </p>
+          </div>
+          <div class="part">
+            <span class="part-label">Formato</span>
+            <p>
+              Especifica cómo quieres el resultado: una lista, una tabla, un
+              máximo de palabras, un lenguaje sencillo, etc.
+            </p>
+          </div>
+        </div>
+
+        <h2>Ejemplo: antes y después</h2>
+        <p>Un prompt vago obliga a la IA a adivinar lo que realmente quieres:</p>
+        <div class="prompt-example reveal">Explícame la fotosíntesis.</div>
+
+        <p>
+          El mismo objetivo, pero con rol, tarea, contexto y formato
+          definidos:
+        </p>
+        <div class="prompt-example reveal">Actúa como un profesor de biología de nivel preparatoria.
+Explícame el proceso de fotosíntesis para un examen que tengo mañana.
+Usa un lenguaje sencillo, evita tecnicismos innecesarios y estructura
+la respuesta en:
+1. Una analogía cotidiana
+2. Los 3 pasos principales del proceso
+3. Un resumen de 2 líneas al final</div>
+
+        <p>
+          Nota cómo el segundo prompt no cambia el tema, pero le da a la IA
+          todo lo que necesita para acertar a la primera: quién eres, qué
+          necesitas, para cuándo y en qué formato.
+        </p>
+
+        <h2>Buenas prácticas rápidas</h2>
+        <ul class="reveal-stagger">
+          <li>
+            <strong>Sé específico:</strong> "escribe un correo" da peores
+            resultados que "escribe un correo formal de 100 palabras para
+            pedir una prórroga de entrega".
+          </li>
+          <li>
+            <strong>Da ejemplos:</strong> si tienes un estilo o formato en
+            mente, muéstraselo a la IA como referencia.
+          </li>
+          <li>
+            <strong>Itera:</strong> el primer resultado casi nunca es el
+            final. Pide ajustes: "hazlo más breve", "usa un tono más cercano".
+          </li>
+          <li>
+            <strong>Divide tareas complejas:</strong> si el pedido es grande,
+            pide primero un esquema o borrador antes del resultado completo.
+          </li>
+        </ul>
+
+        <div class="callout reveal">
+          <strong>Tip:</strong> guarda tus mejores prompts. Con el tiempo
+          armarás tu propia "biblioteca" de instrucciones reutilizables para
+          tareas que repites seguido (resúmenes de clase, correos, código,
+          etc.).
+        </div>
+
+        <div class="content-nav-footer">
+          <a href="como-funciona-la-ia.html">← ¿Cómo funciona la IA?</a>
+          <a href="recursos.html">Todos los recursos →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mireya Leyva · Embajadora de Google Gemini · 2026</p>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>

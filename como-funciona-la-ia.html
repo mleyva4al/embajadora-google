@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Cómo funciona la IA? | Mireya Leyva - Embajadora de Google Gemini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="container">
+        <a href="index.html">Inicio</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="como-funciona-la-ia.html" class="active">¿Cómo funciona la IA?</a>
+        <a href="proximos-talleres.html">Próximos talleres</a>
+      </div>
+    </nav>
+
+    <header class="content-hero">
+      <div class="container">
+        <a href="recursos.html" class="breadcrumb">← Volver a Recursos</a>
+        <span class="content-kicker">Fundamentos de IA</span>
+        <h1>¿Cómo funciona realmente una Inteligencia Artificial?</h1>
+      </div>
+    </header>
+
+    <main>
+      <section class="pizarra-section">
+        <div class="container">
+          <h2 class="pizarra-heading">Simulación: conecta las ideas</h2>
+          <p class="pizarra-subtitle">
+            Antes de leer la explicación, intenta armar tú el proceso. Haz
+            clic en una tarjeta y luego en otra para conectarlas en el orden
+            en que creas que ocurren. Cuando termines, revisa la simulación
+            real.
+          </p>
+
+          <div class="pizarra reveal" id="pizarra">
+            <svg class="pizarra-lines" id="pizarraLines"></svg>
+            <div class="pizarra-nodes">
+              <div class="pizarra-node" data-id="datos">
+                <span class="icon material-symbols-outlined" aria-hidden="true">dataset</span>
+                Datos de entrenamiento
+              </div>
+              <div class="pizarra-node" data-id="parametros">
+                <span class="icon material-symbols-outlined" aria-hidden="true">tune</span>
+                Parámetros del modelo
+              </div>
+              <div class="pizarra-node" data-id="entrenamiento">
+                <span class="icon material-symbols-outlined" aria-hidden="true">model_training</span>
+                Entrenamiento
+              </div>
+              <div class="pizarra-node" data-id="prompt">
+                <span class="icon material-symbols-outlined" aria-hidden="true">chat</span>
+                Tu prompt
+              </div>
+              <div class="pizarra-node" data-id="token">
+                <span class="icon material-symbols-outlined" aria-hidden="true">text_fields</span>
+                Predicción de tokens
+              </div>
+              <div class="pizarra-node" data-id="respuesta">
+                <span class="icon material-symbols-outlined" aria-hidden="true">check_circle</span>
+                Respuesta
+              </div>
+            </div>
+          </div>
+
+          <p class="pizarra-caption" id="pizarraCaption">Selecciona una idea para empezar.</p>
+
+          <div class="pizarra-actions">
+            <button type="button" class="btn-outline" id="pizarraReset">Reiniciar</button>
+            <button type="button" class="btn-black-pill" id="pizarraSimulate">
+              Ver la simulación real
+              <span class="icon material-symbols-outlined" aria-hidden="true">play_arrow</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <article class="content-body container">
+        <h2>No es magia, es predicción de patrones</h2>
+        <p>
+          Cuando le escribes algo a Google Gemini (o a cualquier otro modelo de
+          lenguaje), no está "pensando" como una persona ni buscando la
+          respuesta en una base de datos. Lo que hace es
+          <strong>predecir, palabra por palabra, cuál es la continuación más
+          probable</strong> de tu mensaje, según patrones que aprendió al leer
+          enormes cantidades de texto durante su entrenamiento.
+        </p>
+
+        <div class="callout">
+          <strong>Idea clave:</strong> un modelo de lenguaje es, en esencia, un
+          sistema muy sofisticado de "autocompletar", entrenado con tanto
+          texto que puede razonar, resumir, programar y conversar con
+          coherencia.
+        </div>
+
+        <h3 class="demo-heading">Pruébalo: así "autocompleta" un modelo</h3>
+        <p>
+          Elige el inicio de una frase y observa cómo el modelo va eligiendo,
+          palabra por palabra, la continuación más probable entre varias
+          candidatas.
+        </p>
+
+        <div class="autocomplete-demo reveal" id="autocompleteDemo">
+          <div class="autocomplete-examples">
+            <button type="button" class="btn-outline" data-example="gato">
+              "El gato se subió a la..."
+            </button>
+            <button type="button" class="btn-outline" data-example="tortilla">
+              "Para hacer una tortilla necesitas..."
+            </button>
+          </div>
+          <p class="autocomplete-sentence" id="autocompleteSentence">
+            Elige una frase para empezar.
+          </p>
+          <div class="autocomplete-bars" id="autocompleteBars"></div>
+        </div>
+
+        <h2>Las 3 etapas para llegar hasta aquí</h2>
+
+        <div class="stepper reveal" id="etapasStepper">
+          <div class="stepper-tabs">
+            <button type="button" class="stepper-tab active" data-step="0">1. Entrenamiento</button>
+            <button type="button" class="stepper-tab" data-step="1">2. Ajuste fino</button>
+            <button type="button" class="stepper-tab" data-step="2">3. Inferencia</button>
+          </div>
+          <div class="stepper-panel" data-panel="0">
+            <p>
+              El modelo lee miles de millones de textos (libros, artículos,
+              código, conversaciones) y ajusta internamente millones de
+              parámetros para aprender relaciones entre palabras, ideas y
+              conceptos.
+            </p>
+          </div>
+          <div class="stepper-panel" data-panel="1" hidden>
+            <p>
+              Se le entrena específicamente para seguir instrucciones, ser
+              útil y evitar respuestas dañinas, muchas veces con
+              retroalimentación humana.
+            </p>
+          </div>
+          <div class="stepper-panel" data-panel="2" hidden>
+            <p>
+              Es lo que pasa cuando tú le escribes un prompt. El modelo ya no
+              aprende en ese momento; solo usa todo lo que aprendió antes para
+              generar una respuesta, token por token.
+            </p>
+          </div>
+        </div>
+
+        <h2>¿Qué es un "token"?</h2>
+        <p>
+          La IA no procesa palabras completas, sino fragmentos llamados
+          <strong>tokens</strong> (pueden ser una palabra, parte de una palabra
+          o un signo de puntuación). Genera la respuesta un token a la vez,
+          calculando en cada paso cuál es el más probable dado todo lo anterior.
+        </p>
+
+        <div class="tokenizer-demo reveal">
+          <label class="tokenizer-label" for="tokenizerInput">Escribe una frase y tokenízala:</label>
+          <div class="tokenizer-controls">
+            <input
+              type="text"
+              id="tokenizerInput"
+              value="La inteligencia artificial está transformando la educación."
+            />
+            <button type="button" class="btn-outline" id="tokenizerBtn">Tokenizar</button>
+          </div>
+          <div class="token-chips" id="tokenChips"></div>
+          <p class="tokenizer-note">
+            *Simplificado con fines ilustrativos: el tokenizador real de
+            Gemini usa un algoritmo más sofisticado.
+          </p>
+        </div>
+
+        <h2>¿Por qué a veces se equivoca o "alucina"?</h2>
+        <p>
+          Como el modelo predice patrones en lugar de consultar una fuente de
+          verdad, a veces genera información que suena convincente pero es
+          incorrecta o inventada. A esto se le llama
+          <strong>alucinación</strong>. Por eso es importante:
+        </p>
+        <ul class="checklist reveal">
+          <li>
+            <label><input type="checkbox" /> Verificar datos importantes (fechas, cifras, fuentes).</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Pedirle que cite de dónde saca la información cuando sea posible.</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Usarla como un asistente que propone borradores, no como la última palabra.</label>
+          </li>
+        </ul>
+
+        <h2>Entonces, ¿por qué parece tan inteligente?</h2>
+        <p>
+          Porque la escala importa: al entrenarse con tantísimo texto, el
+          modelo captura patrones muy sutiles de razonamiento, estilo y
+          conocimiento del mundo. No "entiende" como un humano, pero es capaz
+          de producir respuestas útiles, coherentes y sorprendentemente
+          creativas cuando sabes cómo pedírselas — que es justo el tema de la
+          siguiente guía.
+        </p>
+
+        <div class="content-nav-footer">
+          <a href="recursos.html">← Todos los recursos</a>
+          <a href="estructura-de-prompts.html">Siguiente: La estructura de un buen prompt →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Mireya Leyva · Embajadora de Google Gemini · 2026</p>
+    </footer>
+
+    <script>
+      (function () {
+        var board = document.getElementById("pizarra");
+        var svg = document.getElementById("pizarraLines");
+        var caption = document.getElementById("pizarraCaption");
+        var resetBtn = document.getElementById("pizarraReset");
+        var simulateBtn = document.getElementById("pizarraSimulate");
+        var nodeEls = Array.prototype.slice.call(board.querySelectorAll(".pizarra-node"));
+
+        var descriptions = {
+          datos: "Miles de millones de textos: libros, artículos, código, conversaciones.",
+          parametros: 'Los "controles" internos del modelo que se ajustan al aprender.',
+          entrenamiento: "El modelo ajusta sus parámetros leyendo los datos una y otra vez.",
+          prompt: "El texto que tú escribes cuando le pides algo a la IA.",
+          token: "El modelo ya entrenado predice, token por token, la continuación más probable.",
+          respuesta: "El texto final que ves en pantalla, construido token a token."
+        };
+
+        var correctEdges = [
+          ["datos", "entrenamiento", "Los datos de entrenamiento alimentan el entrenamiento del modelo."],
+          ["parametros", "entrenamiento", "Los parámetros se ajustan durante ese entrenamiento."],
+          ["entrenamiento", "token", "Un modelo ya entrenado pasa a predecir tokens."],
+          ["prompt", "token", "Tu prompt es el punto de partida de esa predicción."],
+          ["token", "respuesta", "Token a token, se construye la respuesta final."]
+        ];
+
+        var userEdges = {};
+        var selectedId = null;
+        var simTimer = null;
+
+        function edgeKey(a, b) {
+          return [a, b].sort().join("|");
+        }
+
+        function nodeEl(id) {
+          return board.querySelector('[data-id="' + id + '"]');
+        }
+
+        function redrawLines() {
+          svg.innerHTML = "";
+          var boardRect = board.getBoundingClientRect();
+          svg.setAttribute("width", boardRect.width);
+          svg.setAttribute("height", boardRect.height);
+          Object.keys(userEdges).forEach(function (key) {
+            var ids = key.split("|");
+            var a = nodeEl(ids[0]);
+            var b = nodeEl(ids[1]);
+            if (!a || !b) return;
+            var aRect = a.getBoundingClientRect();
+            var bRect = b.getBoundingClientRect();
+            var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", aRect.left + aRect.width / 2 - boardRect.left);
+            line.setAttribute("y1", aRect.top + aRect.height / 2 - boardRect.top);
+            line.setAttribute("x2", bRect.left + bRect.width / 2 - boardRect.left);
+            line.setAttribute("y2", bRect.top + bRect.height / 2 - boardRect.top);
+            line.setAttribute("class", "pizarra-edge");
+            svg.appendChild(line);
+          });
+        }
+
+        function resetBoard() {
+          if (simTimer) {
+            clearTimeout(simTimer);
+            simTimer = null;
+          }
+          userEdges = {};
+          selectedId = null;
+          nodeEls.forEach(function (el) {
+            el.classList.remove("selected", "visited");
+          });
+          redrawLines();
+          caption.textContent = "Selecciona una idea para empezar.";
+        }
+
+        nodeEls.forEach(function (el) {
+          el.addEventListener("click", function () {
+            if (simTimer) return;
+            var id = el.getAttribute("data-id");
+            if (selectedId === null) {
+              selectedId = id;
+              el.classList.add("selected");
+              caption.textContent = descriptions[id];
+            } else if (selectedId === id) {
+              el.classList.remove("selected");
+              selectedId = null;
+              caption.textContent = "Selecciona una idea para empezar.";
+            } else {
+              var prevEl = nodeEl(selectedId);
+              if (prevEl) prevEl.classList.remove("selected");
+              var key = edgeKey(selectedId, id);
+              if (userEdges[key]) {
+                delete userEdges[key];
+              } else {
+                userEdges[key] = true;
+              }
+              selectedId = null;
+              redrawLines();
+            }
+          });
+        });
+
+        resetBtn.addEventListener("click", resetBoard);
+
+        simulateBtn.addEventListener("click", function () {
+          resetBoard();
+          var i = 0;
+          function step() {
+            if (i >= correctEdges.length) {
+              caption.textContent = "Así fluye la información dentro de una IA generativa.";
+              simTimer = null;
+              return;
+            }
+            var edge = correctEdges[i];
+            userEdges[edgeKey(edge[0], edge[1])] = true;
+            redrawLines();
+            var a = nodeEl(edge[0]);
+            var b = nodeEl(edge[1]);
+            if (a) a.classList.add("visited");
+            if (b) b.classList.add("visited");
+            caption.textContent = edge[2];
+            i++;
+            simTimer = setTimeout(step, 1400);
+          }
+          step();
+        });
+
+        window.addEventListener("resize", redrawLines);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        // --- Simulador de autocompletado ---
+        var examples = {
+          gato: {
+            prefix: "El gato se subió a la",
+            steps: [
+              { chosen: "mesa", candidates: [["mesa", 42], ["silla", 23], ["ventana", 18], ["cama", 10], ["pared", 7]] },
+              { chosen: "y", candidates: [["y", 55], [".", 20], ["para", 15], ["mientras", 10]] },
+              { chosen: "miró", candidates: [["miró", 38], ["durmió", 30], ["saltó", 20], ["maulló", 12]] },
+              { chosen: "por la ventana.", candidates: [["por la ventana.", 50], ["a todos.", 25], ["el jardín.", 25]] }
+            ]
+          },
+          tortilla: {
+            prefix: "Para hacer una tortilla necesitas",
+            steps: [
+              { chosen: "harina", candidates: [["harina", 47], ["huevos", 28], ["maíz", 15], ["agua", 10]] },
+              { chosen: ",", candidates: [[",", 60], [" y", 25], [".", 15]] },
+              { chosen: "agua", candidates: [["agua", 44], ["sal", 30], ["aceite", 26]] },
+              { chosen: "y un poco de sal.", candidates: [["y un poco de sal.", 48], ["y calor.", 32], ["y tiempo.", 20]] }
+            ]
+          }
+        };
+
+        var sentenceEl = document.getElementById("autocompleteSentence");
+        var barsEl = document.getElementById("autocompleteBars");
+        var exampleBtns = document.querySelectorAll("[data-example]");
+        var autoTimer = null;
+
+        function clearAutoTimer() {
+          if (autoTimer) {
+            clearTimeout(autoTimer);
+            autoTimer = null;
+          }
+        }
+
+        function renderBars(candidates) {
+          barsEl.innerHTML = "";
+          candidates.forEach(function (c, idx) {
+            var row = document.createElement("div");
+            row.className = "bar-row";
+            row.style.animationDelay = idx * 0.08 + "s";
+            row.innerHTML =
+              '<span class="bar-label">' + c[0] + '</span>' +
+              '<span class="bar-track"><span class="bar-fill" style="width:' + c[1] + '%"></span></span>' +
+              '<span class="bar-pct">' + c[1] + '%</span>';
+            barsEl.appendChild(row);
+          });
+        }
+
+        function runExample(key) {
+          clearAutoTimer();
+          exampleBtns.forEach(function (b) { b.disabled = true; });
+          var example = examples[key];
+          var sentence = example.prefix;
+          sentenceEl.textContent = sentence;
+          barsEl.innerHTML = "";
+          var i = 0;
+
+          function step() {
+            if (i >= example.steps.length) {
+              sentenceEl.textContent = sentence;
+              barsEl.innerHTML = '<p class="autocomplete-done">Así arma un modelo su respuesta: un token a la vez.</p>';
+              exampleBtns.forEach(function (b) { b.disabled = false; });
+              autoTimer = null;
+              return;
+            }
+            var s = example.steps[i];
+            renderBars(s.candidates);
+            autoTimer = setTimeout(function () {
+              sentence += " " + s.chosen;
+              sentenceEl.textContent = sentence;
+              i++;
+              autoTimer = setTimeout(step, 500);
+            }, 900);
+          }
+          step();
+        }
+
+        exampleBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            runExample(btn.getAttribute("data-example"));
+          });
+        });
+
+        // --- Etapas: pestañas ---
+        var stepper = document.getElementById("etapasStepper");
+        if (stepper) {
+          var tabs = stepper.querySelectorAll(".stepper-tab");
+          var panels = stepper.querySelectorAll(".stepper-panel");
+          tabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+              var step = tab.getAttribute("data-step");
+              tabs.forEach(function (t) { t.classList.remove("active"); });
+              tab.classList.add("active");
+              panels.forEach(function (p) {
+                p.hidden = p.getAttribute("data-panel") !== step;
+              });
+            });
+          });
+        }
+
+        // --- Tokenizador ---
+        var tokenizerInput = document.getElementById("tokenizerInput");
+        var tokenizerBtn = document.getElementById("tokenizerBtn");
+        var tokenChips = document.getElementById("tokenChips");
+
+        function fakeTokenize(text) {
+          var raw = text.match(/[\wáéíóúüñÁÉÍÓÚÜÑ]+|[^\s\w]/g) || [];
+          var tokens = [];
+          raw.forEach(function (piece) {
+            if (/^[\wáéíóúüñÁÉÍÓÚÜÑ]+$/.test(piece) && piece.length > 7) {
+              var mid = Math.ceil(piece.length / 2);
+              tokens.push(piece.slice(0, mid));
+              tokens.push(piece.slice(mid));
+            } else {
+              tokens.push(piece);
+            }
+          });
+          return tokens;
+        }
+
+        function renderTokens() {
+          var tokens = fakeTokenize(tokenizerInput.value);
+          tokenChips.innerHTML = "";
+          tokens.forEach(function (tok, idx) {
+            var chip = document.createElement("span");
+            chip.className = "token-chip token-chip-" + (idx % 4);
+            chip.style.animationDelay = idx * 0.05 + "s";
+            chip.textContent = tok;
+            tokenChips.appendChild(chip);
+          });
+          var countEl = document.createElement("p");
+          countEl.className = "tokenizer-count";
+          countEl.textContent = tokens.length + " tokens";
+          tokenChips.appendChild(countEl);
+        }
+
+        if (tokenizerBtn) {
+          tokenizerBtn.addEventListener("click", renderTokens);
+          tokenizerInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") renderTokens();
+          });
+          renderTokens();
+        }
+      })();
+    </script>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
