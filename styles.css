@@ -390,6 +390,11 @@ a {
   letter-spacing: -0.5px;
   color: var(--text-main);
   line-height: 1.2;
+  text-align: center;
+}
+
+.intro-line {
+  display: inline;
 }
 
 .wave-letter {
@@ -1268,6 +1273,10 @@ a {
     align-self: center;
   }
 
+  .about-section {
+    margin-top: 24px;
+  }
+
   .layout-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1392,6 +1401,15 @@ a {
 
   .intro-title {
     font-size: clamp(20px, 7vw, 30px);
+  }
+
+  .intro-line {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .intro-line:last-child {
+    margin-bottom: 0;
   }
 
   .gemini-logo {

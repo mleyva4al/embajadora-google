@@ -19,11 +19,7 @@
   <body>
     <div class="intro-splash" id="introSplash" aria-hidden="true">
       <div class="intro-content">
-        <h1 class="intro-title" id="introTitle">
-          WELCOME TO MY
-          <span style="color: var(--google-blue)">G</span><span style="color: var(--google-red)">O</span><span style="color: var(--google-yellow)">O</span><span style="color: var(--google-blue)">G</span><span style="color: var(--google-green)">L</span><span style="color: var(--google-red)">E</span>
-          SPACE
-        </h1>
+        <h1 class="intro-title" id="introTitle"><span class="intro-line">WELCOME TO MY</span> <span class="intro-line intro-line-google"><span style="color: var(--google-blue)">G</span><span style="color: var(--google-red)">O</span><span style="color: var(--google-yellow)">O</span><span style="color: var(--google-blue)">G</span><span style="color: var(--google-green)">L</span><span style="color: var(--google-red)">E</span></span> <span class="intro-line">SPACE</span></h1>
         <img src="estudiantes-embajadores.png" alt="" onerror="this.style.display='none'" />
       </div>
     </div>
@@ -39,28 +35,29 @@
 
         var el = document.getElementById("introTitle");
         if (!el) return;
-        var nodes = Array.prototype.slice.call(el.childNodes);
-        el.textContent = "";
+        var lines = Array.prototype.slice.call(el.querySelectorAll(".intro-line"));
         var i = 0;
-        nodes.forEach(function (node, index) {
-          if (node.nodeType === Node.TEXT_NODE) {
-            var text = node.textContent.replace(/\s+/g, " ");
-            if (index === 0) text = text.replace(/^\s+/, "");
-            if (index === nodes.length - 1) text = text.replace(/\s+$/, "");
-            text.split("").forEach(function (ch) {
-              var span = document.createElement("span");
-              span.className = "wave-letter";
-              span.style.animationDelay = i * 0.04 + "s";
-              span.textContent = ch === " " ? " " : ch;
-              el.appendChild(span);
+        lines.forEach(function (line) {
+          var nodes = Array.prototype.slice.call(line.childNodes);
+          line.textContent = "";
+          nodes.forEach(function (node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              var text = node.textContent.replace(/\s+/g, " ").trim();
+              text.split("").forEach(function (ch) {
+                var span = document.createElement("span");
+                span.className = "wave-letter";
+                span.style.animationDelay = i * 0.04 + "s";
+                span.textContent = ch === " " ? " " : ch;
+                line.appendChild(span);
+                i++;
+              });
+            } else {
+              node.classList.add("wave-letter");
+              node.style.animationDelay = i * 0.04 + "s";
+              line.appendChild(node);
               i++;
-            });
-          } else {
-            node.classList.add("wave-letter");
-            node.style.animationDelay = i * 0.04 + "s";
-            el.appendChild(node);
-            i++;
-          }
+            }
+          });
         });
       })();
     </script>
