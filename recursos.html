@@ -18,11 +18,16 @@
   </head>
   <body>
     <nav class="site-nav">
-      <div class="container">
+      <div class="container nav-bar">
         <a href="index.html">Inicio</a>
-        <a href="recursos.html" class="active">Recursos</a>
-        <a href="como-funciona-la-ia.html">¿Cómo funciona la IA?</a>
-        <a href="proximos-talleres.html">Próximos talleres</a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú">
+          <span class="icon material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+          <a href="recursos.html" class="active">Recursos</a>
+          <a href="como-funciona-la-ia.html">¿Cómo funciona la IA?</a>
+          <a href="proximos-talleres.html">Próximos talleres</a>
+        </div>
       </div>
     </nav>
 

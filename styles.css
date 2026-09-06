@@ -221,13 +221,6 @@ a {
   z-index: 100;
 }
 
-.site-nav .container {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
 .site-nav a {
   display: inline-block;
   padding: 16px 4px;
@@ -244,6 +237,36 @@ a {
 .site-nav a:hover,
 .site-nav a.active {
   border-bottom-color: var(--google-blue-light);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle .icon {
+  font-size: 26px;
 }
 
 /* 5. SECCIÓN DE BIENVENIDA */
@@ -438,6 +461,17 @@ a {
   font-size: 28px;
   font-weight: 900;
   letter-spacing: 1px;
+}
+
+.banner-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.banner-black .banner-social {
+  justify-content: center;
+  margin: 16px auto 0;
 }
 
 .about-section {
@@ -1182,8 +1216,34 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .site-nav .container {
-    gap: 16px;
+  .nav-bar {
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: var(--black);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-menu a {
+    padding: 14px 24px;
   }
 
   .content-hero h1 {
@@ -1236,13 +1296,8 @@ a {
     padding: 0 16px;
   }
 
-  .site-nav a {
-    padding: 12px 8px;
-    font-size: 12.5px;
-  }
-
-  .site-nav .container {
-    gap: 4px;
+  .nav-menu a {
+    font-size: 14px;
   }
 
   .hero-section {

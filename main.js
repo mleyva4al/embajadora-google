@@ -59,3 +59,27 @@
     observer.observe(el);
   });
 })();
+
+(function () {
+  var toggle = document.getElementById("navToggle");
+  var menu = document.getElementById("navMenu");
+  if (!toggle || !menu) return;
+
+  var icon = toggle.querySelector(".icon");
+
+  function setOpen(open) {
+    menu.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    if (icon) icon.textContent = open ? "close" : "menu";
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(!menu.classList.contains("open"));
+  });
+
+  menu.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+})();
