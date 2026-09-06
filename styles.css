@@ -461,6 +461,8 @@ a {
   font-size: 28px;
   font-weight: 900;
   letter-spacing: 1px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .banner-subtitle {
@@ -1365,6 +1367,15 @@ a {
 
   .pizarra-heading {
     font-size: 21px;
+  }
+
+  .banner-black h2 {
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+
+  .banner-subtitle {
+    font-size: 13px;
   }
 }
 
